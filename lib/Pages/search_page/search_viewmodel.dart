@@ -4,7 +4,7 @@ import 'package:assistant_app_use_case/core/base/base_state.dart';
 import 'package:dio/dio.dart';
 
 import '../../core/Api/api_keys.dart';
-import '../../core/service/second_dio.dart';
+import '../../core/service/service_dio.dart';
 
 abstract class SearchViewModel extends BaseModel<SearchPage> {
   late final IService service;
