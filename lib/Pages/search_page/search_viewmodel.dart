@@ -10,6 +10,7 @@ abstract class SearchViewModel extends BaseModel<SearchPage> {
   late final IService service;
   List<Exercises> exerciseList = [];
   List<Exercises>? searcList;
+  bool isready = true; // Görsellik  yok. Search inince typing hazır
 
   @override
   void initState() {
@@ -20,12 +21,15 @@ abstract class SearchViewModel extends BaseModel<SearchPage> {
             baseUrl: "https://exercises-by-api-ninjas.p.rapidapi.com")));
     super.initState();
     fetcItems();
-    setState(() {});
   }
 
   Future<void> fetcItems() async {
-    var axax = await service.fetcExerciseItem();
-    exerciseList = axax ?? [];
+    isLoading();
+    var result = await service.fetcExerciseItem();
+    exerciseList = result ?? [];
+    isLoading();
+    // isready = true;
+    setState(() {});
   }
 
   void search(String query) {
@@ -44,5 +48,10 @@ abstract class SearchViewModel extends BaseModel<SearchPage> {
   void clearSearchList() {
     searcList = [];
     setState(() {});
+  }
+
+// Görsellik  yok. Search inince typing hazır
+  void isLoading() {
+    isready = !isready;
   }
 }

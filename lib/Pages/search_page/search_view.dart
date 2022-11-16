@@ -14,6 +14,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends SearchViewModel {
   @override
   Widget build(BuildContext context) {
+    print(isready);
     // ignore: prefer_const_constructors
     return SafeArea(
       // ignore: prefer_const_constructors
@@ -34,6 +35,7 @@ class _SearchPageState extends SearchViewModel {
                     shape: StadiumBorder(),
                   ),
                   child: TextFormField(
+                    enabled: isready == false ? false : true,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                       errorBorder: InputBorder.none,
