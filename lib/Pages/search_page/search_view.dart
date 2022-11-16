@@ -41,7 +41,7 @@ class _SearchPageState extends SearchViewModel {
                       focusedBorder: InputBorder.none,
                       focusedErrorBorder: InputBorder.none,
                       hintText: "Search",
-                      suffixIcon: (searcList?.isNotEmpty ?? true)
+                      suffixIcon: (searcList?.isNotEmpty ?? false)
                           ? IconButton(
                               color: Colors.white,
                               onPressed: (() {

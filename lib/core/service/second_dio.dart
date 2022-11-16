@@ -6,19 +6,20 @@ import 'package:dio/dio.dart';
 import '../../Pages/search_page/search_model.dart';
 
 abstract class IService {
-  final Dio _dio;
+  final Dio dio;
+  final String path;
 
-  IService(this._dio);
+  IService({required this.dio, required this.path});
 
   Future<List<Exercises>?> fetcExerciseItem();
 }
 
 class Service extends IService {
-  Service(super.dio);
+  Service({required super.dio, required super.path});
 
   @override
   Future<List<Exercises>?> fetcExerciseItem() async {
-    final response = await _dio.get('/v1/exercises');
+    final response = await dio.get(path);
 
     if (response.statusCode == HttpStatus.ok) {
       final jsonBody = response.data;

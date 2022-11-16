@@ -13,9 +13,11 @@ abstract class SearchViewModel extends BaseModel<SearchPage> {
 
   @override
   void initState() {
-    service = Service(Dio(BaseOptions(
-        headers: {'X-RapidAPI-Key': ApiKeys.instance.rapidApiExercisesKey, 'X-RapidAPI-Host': 'exercises-by-api-ninjas.p.rapidapi.com'},
-        baseUrl: "https://exercises-by-api-ninjas.p.rapidapi.com")));
+    service = Service(
+        path: '/v1/exercises',
+        dio: Dio(BaseOptions(
+            headers: {'X-RapidAPI-Key': ApiKeys.instance.rapidApiExercisesKey, 'X-RapidAPI-Host': 'exercises-by-api-ninjas.p.rapidapi.com'},
+            baseUrl: "https://exercises-by-api-ninjas.p.rapidapi.com")));
     super.initState();
     fetcItems();
     setState(() {});
